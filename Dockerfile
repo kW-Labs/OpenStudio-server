@@ -119,11 +119,14 @@ COPY /docker/server/start-server.sh /usr/local/bin/start-server
 COPY /docker/server/rails-entrypoint.sh /usr/local/bin/rails-entrypoint
 COPY /docker/server/start-web-background.sh /usr/local/bin/start-web-background
 COPY /docker/server/start-workers.sh /usr/local/bin/start-workers
+COPY /docker/server/patch-standards.sh /usr/local/bin/patch-standards
 RUN chmod 755 /usr/local/bin/wait-for-it
 RUN chmod +x /usr/local/bin/start-server
 RUN chmod 755 /usr/local/bin/rails-entrypoint
 RUN chmod 755 /usr/local/bin/start-web-background
 RUN chmod 755 /usr/local/bin/start-workers
+RUN chmod 755 /usr/local/bin/patch-standards
+
 
 # set the permissions for windows users
 RUN chmod +x /opt/openstudio/server/bin/*
