@@ -126,7 +126,7 @@ RUN chmod 755 /usr/local/bin/rails-entrypoint
 RUN chmod 755 /usr/local/bin/start-web-background
 RUN chmod 755 /usr/local/bin/start-workers
 RUN chmod 755 /usr/local/bin/patch-standards
-
+RUN /usr/local/bin/patch-standards openstudio-standards kW-Labs/openstudio-standards master
 
 # set the permissions for windows users
 RUN chmod +x /opt/openstudio/server/bin/*
