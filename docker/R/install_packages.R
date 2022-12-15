@@ -48,7 +48,19 @@ install_and_verify = function(package_name, configure.args=c(), repos=c('http://
     print(paste('Successfully installed and test loaded ', package_name, sep=''))
 }
 
+install_and_verify_url = function(package_name, packageurl){
+    print(paste('Calling install for package url ', packageurl, sep=''))
+    install.packages(packageurl, repos=NULL, type="source")
+    if (!require(package_name, character.only = TRUE)){
+        print('Error installing package, check log')
+        quit(status=1)
+    }
+    print(paste('Successfully installed and test loaded ', package_name, sep=''))
+}
+
+
 # Install Probability / Optimization / Analysis Packages
+install_and_verify('Rcpp')
 install_and_verify('lhs')
 install_and_verify('e1071')
 install_and_verify('triangle')
@@ -57,8 +69,12 @@ install_and_verify('mco')
 install_and_verify('rgenoud')
 install_and_verify('conf.design')
 install_and_verify('combinat')
+install_and_verify_url('numbers','https://cran.r-project.org/src/contrib/Archive/numbers/numbers_0.8-2.tar.gz')
 install_and_verify('DoE.base')
+install_and_verify('Matrix')
+install_and_verify_url('RcppEigen','https://cran.r-project.org/src/contrib/Archive/RcppEigen/RcppEigen_0.3.3.9.1.tar.gz')
 install_and_verify('sensitivity')
 
 # R Serve
 install_and_verify('Rserve', configure.args=c('PKG_CPPFLAGS=-DNODAEMON'), repos=c('http://rforge.net'))
+
